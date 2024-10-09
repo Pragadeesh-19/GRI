@@ -2,6 +2,7 @@ package org.pragadeesh.gri.service;
 
 import org.pragadeesh.gri.authentication.JwtResponse;
 import org.pragadeesh.gri.entity.Manager;
+import org.pragadeesh.gri.entity.Role;
 import org.pragadeesh.gri.repository.ManagerRepository;
 import org.pragadeesh.gri.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,9 @@ public class AuthenticationService {
         Manager manager = new Manager();
         manager.setUsername(request.getUsername());
         manager.setPassword(passwordEncoder.encode(request.getPassword()));
-        manager.setRole(request.getRole());
+        manager.setLocation(request.getLocation());
+        manager.setShift(request.getShift());
+        manager.setRole(Role.MANAGERS);
 
         managerRepository.save(manager);
         return "Manager Registered Successfully";

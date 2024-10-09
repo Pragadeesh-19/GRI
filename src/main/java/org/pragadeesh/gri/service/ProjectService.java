@@ -20,6 +20,12 @@ public class ProjectService {
         this.managerRepository = managerRepository;
     }
 
+    public Project createProject(String projectName) {
+        Project project = new Project();
+        project.setName(projectName);
+        return projectRepository.save(project);
+    }
+
     public Project assignProjectToManager(UUID projectId, UUID managerId) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project Not found with ProjectId " + projectId));
@@ -35,6 +41,6 @@ public class ProjectService {
         Manager manager = managerRepository.findById(managerId)
                 .orElseThrow(() -> new RuntimeException("Manager not found with managerId " + managerId));
 
-        return projectRepository.findAllByAssignedManager(managerId);
+        return projectRepository.findAllByAssignedManager(manager);
     }
 }

@@ -11,5 +11,5 @@ import java.util.UUID;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, UUID> {
 
-    List<Project> findAllByAssignedManager(UUID managerId);
+    List<Project> findAllByAssignedManager(Manager managerId);
 }

@@ -8,5 +8,7 @@ public class JwtRequest {
 
     private String username;
     private String password;
+    private String location;
+    private String shift;
     private Role role;
 }
