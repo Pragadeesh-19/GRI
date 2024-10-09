@@ -6,6 +6,7 @@ import lombok.Data;
 import java.util.UUID;
 
 @Entity
+@Table(name = "projects")
 @Data
 public class Project {
 
