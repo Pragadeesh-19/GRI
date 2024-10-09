@@ -6,18 +6,22 @@ import lombok.Data;
 import java.util.UUID;
 
 @Entity
-@Table(name = "projects")
 @Data
-public class Project {
+@Table(name = "engineers")
+public class Engineers {
 
     @Id
     @GeneratedValue
     private UUID id;
 
-    @Column(nullable = false)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "assigned_manager_id")
-    private Manager assignedManager;
+    @JoinColumn(name = "project_id")
+    private Project project;
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 }
+

@@ -1,6 +1,5 @@
-package org.pragadeesh.gri.controller;
+package org.pragadeesh.gri.authentication;
 
-import org.pragadeesh.gri.entity.JwtResponse;
 import org.pragadeesh.gri.entity.Manager;
 import org.pragadeesh.gri.service.AuthenticationService;
 import org.springframework.http.ResponseEntity;

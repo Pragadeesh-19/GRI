@@ -24,8 +24,12 @@ public class Manager implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Project> project;
+    private String location;
+
+    private String shift;
+
+    @OneToMany(mappedBy = "assignedManager")
+    private List<Project> projects;
 
     @Enumerated(EnumType.STRING)
     private Role role;

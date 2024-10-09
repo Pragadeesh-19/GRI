@@ -1,4 +1,4 @@
-package org.pragadeesh.gri.service;
+package org.pragadeesh.gri.authentication;
 
 import org.pragadeesh.gri.repository.ManagerRepository;
 import org.springframework.security.core.userdetails.UserDetails;

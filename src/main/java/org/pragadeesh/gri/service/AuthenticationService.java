@@ -1,6 +1,6 @@
 package org.pragadeesh.gri.service;
 
-import org.pragadeesh.gri.entity.JwtResponse;
+import org.pragadeesh.gri.authentication.JwtResponse;
 import org.pragadeesh.gri.entity.Manager;
 import org.pragadeesh.gri.repository.ManagerRepository;
 import org.pragadeesh.gri.util.JwtUtil;

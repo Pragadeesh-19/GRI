@@ -1,4 +1,4 @@
-package org.pragadeesh.gri.entity;
+package org.pragadeesh.gri.authentication;
 
 import lombok.Getter;
 

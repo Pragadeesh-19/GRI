@@ -1,6 +1,7 @@
-package org.pragadeesh.gri.entity;
+package org.pragadeesh.gri.authentication;
 
 import lombok.Data;
+import org.pragadeesh.gri.entity.Role;
 
 @Data
 public class JwtRequest {
