@@ -8,9 +8,9 @@ import java.util.UUID;
 
 public interface TechnicianRepository extends JpaRepository<Technicians, UUID> {
 
-    List<Technicians> findTechniciansByProjectId(UUID projectId);
+    List<Technicians> findByProjectId(UUID projectId);
 
-    List<Technicians> findTechniciansByManagerId(UUID managerId);
+    List<Technicians> findByManagerId(UUID managerId);
 }
 
 

@@ -3,7 +3,6 @@ package org.pragadeesh.gri.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,5 +22,5 @@ public class Supervisor {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
-    private Manager manager;
+    private User manager;
 }

@@ -1,7 +1,6 @@
 package org.pragadeesh.gri.entity;
 
 import jakarta.persistence.*;
-import jakarta.websocket.OnOpen;
 import lombok.Data;
 
 import java.util.UUID;
@@ -23,6 +22,6 @@ public class Laborer {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
-    private Manager manager;
+    private User manager;
 
 }

@@ -31,6 +31,6 @@ public class ProductionService {
     }
 
     public List<Production> getAllProductionLogsForProject(UUID projectId) {
-        return productionRepository.findProductionByProjectId(projectId);
+        return productionRepository.findByProjectId(projectId);
     }
 }

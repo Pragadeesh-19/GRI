@@ -1,8 +1,8 @@
 package org.pragadeesh.gri.service;
 
-import org.pragadeesh.gri.entity.Manager;
+import org.pragadeesh.gri.entity.User;
 import org.pragadeesh.gri.entity.Project;
-import org.pragadeesh.gri.repository.ManagerRepository;
+import org.pragadeesh.gri.repository.UserRepository;
 import org.pragadeesh.gri.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +13,11 @@ import java.util.UUID;
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
-    private final ManagerRepository managerRepository;
+    private final UserRepository userRepository;
 
-    public ProjectService(ProjectRepository projectRepository, ManagerRepository managerRepository) {
+    public ProjectService(ProjectRepository projectRepository, UserRepository userRepository) {
         this.projectRepository = projectRepository;
-        this.managerRepository = managerRepository;
+        this.userRepository = userRepository;
     }
 
     public Project createProject(String projectName) {
@@ -30,7 +30,7 @@ public class ProjectService {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project Not found with ProjectId " + projectId));
 
-        Manager manager = managerRepository.findById(managerId)
+        User manager = userRepository.findById(managerId)
                 .orElseThrow(() -> new RuntimeException("Manager not found with managerId " + managerId));
 
         project.setAssignedManager(manager);
@@ -38,9 +38,9 @@ public class ProjectService {
     }
 
     public List<Project> getAllProjectForManager(UUID managerId) {
-        Manager manager = managerRepository.findById(managerId)
+        User manager = userRepository.findById(managerId)
                 .orElseThrow(() -> new RuntimeException("Manager not found with managerId " + managerId));
 
-        return projectRepository.findAllByAssignedManager(manager);
+        return projectRepository.findByAssignedManager(manager);
     }
 }

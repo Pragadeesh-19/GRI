@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface OperatorRepository extends JpaRepository<Operators, UUID> {
 
-    List<Operators> findOperatorsByProjectId(UUID projectId);
+    List<Operators> findByProjectId(UUID projectId);
 
-    List<Operators> findOperatorsByManagerId(UUID managerId);
+    List<Operators> findByManagerId(UUID managerId);
 }

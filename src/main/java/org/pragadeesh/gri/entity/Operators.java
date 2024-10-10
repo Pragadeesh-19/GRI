@@ -22,5 +22,5 @@ public class Operators {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
-    private Manager manager;
+    private User manager;
 }

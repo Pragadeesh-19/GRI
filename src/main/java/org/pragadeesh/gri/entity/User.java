@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-public class Manager implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue

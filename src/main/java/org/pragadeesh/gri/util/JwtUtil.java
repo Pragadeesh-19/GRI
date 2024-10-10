@@ -4,7 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.pragadeesh.gri.entity.Manager;
+import org.pragadeesh.gri.entity.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ public class JwtUtil {
 
     private static final String SECRET_KEY = "32B099BB09034268456CFB32914092391ECB2B275F0FAB0E91740463EF8F424A25CA74134CF884DC1DE6B045EB71641D7DC08BBC23D9A7EC3E8D8439BAF04362";
 
-    public String generateToken(Manager manager) {
+    public String generateToken(User manager) {
         return Jwts
                 .builder()
                 .subject(manager.getUsername())

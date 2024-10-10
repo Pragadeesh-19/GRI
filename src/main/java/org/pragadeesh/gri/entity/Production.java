@@ -27,5 +27,5 @@ public class Production {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
-    private Manager manager;
+    private User manager;
 }

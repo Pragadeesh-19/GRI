@@ -35,6 +35,6 @@ public class VehicleService {
     }
 
     public List<Vehicle> getAllVehiclesForProject(UUID projectId) {
-        return vehicleRepository.findVehiclesByProjectId(projectId);
+        return vehicleRepository.findByProjectId(projectId);
     }
 }

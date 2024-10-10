@@ -3,6 +3,7 @@ package org.pragadeesh.gri.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -15,9 +16,13 @@ public class Vehicle {
     private UUID id;
 
     @Column(nullable = false)
+    private String vehicleName;
+
+    @Column(nullable = false)
     private String vehicleType;
 
-    private String vehicleImageUrl;
+    @ElementCollection
+    private List<String> vehicleImageUrl;
 
     @ManyToOne
     @JoinColumn(name = "project_id")
@@ -25,5 +30,5 @@ public class Vehicle {
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
-    private Manager manager;
+    private User manager;
 }

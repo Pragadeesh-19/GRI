@@ -19,5 +19,5 @@ public class Project {
 
     @ManyToOne
     @JoinColumn(name = "assigned_manager_id")
-    private Manager assignedManager;
+    private User assignedManager;
 }

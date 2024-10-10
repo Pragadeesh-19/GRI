@@ -29,6 +29,6 @@ public class OperatorService {
     }
 
     public List<Operators> getAllOperatorsForProject(UUID projectId) {
-        return operatorRepository.findOperatorsByProjectId(projectId);
+        return operatorRepository.findByProjectId(projectId);
     }
 }

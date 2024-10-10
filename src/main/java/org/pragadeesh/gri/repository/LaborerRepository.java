@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface LaborerRepository extends JpaRepository<Laborer, UUID> {
 
-    List<Laborer> findLaborerByProjectId(UUID projectId);
+    List<Laborer> findByProjectId(UUID projectId);
 
-    List<Laborer> findLaborerByManagerId(UUID managerId);
+    List<Laborer> findByManagerId(UUID managerId);
 }

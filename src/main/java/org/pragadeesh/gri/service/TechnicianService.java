@@ -29,6 +29,6 @@ public class TechnicianService {
     }
 
     public List<Technicians> getAllTechniciansForProject(UUID projectId) {
-        return technicianRepository.findTechniciansByProjectId(projectId);
+        return technicianRepository.findByProjectId(projectId);
     }
 }

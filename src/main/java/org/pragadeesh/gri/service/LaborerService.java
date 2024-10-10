@@ -29,6 +29,6 @@ public class LaborerService {
     }
 
     public List<Laborer> getAllLaborersForProject(UUID projectId) {
-        return laborerRepository.findLaborerByProjectId(projectId);
+        return laborerRepository.findByProjectId(projectId);
     }
 }

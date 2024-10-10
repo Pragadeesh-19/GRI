@@ -20,7 +20,7 @@ public class SupervisorService {
     }
 
     public Supervisor addSupervisorToProject(UUID projectId, String supervisorName) {
-        List<Supervisor> supervisors = supervisorRepository.findSupervisorByProjectId(projectId);
+        List<Supervisor> supervisors = supervisorRepository.findByProjectId(projectId);
 
         // Check if a supervisor with the same name already exists
         if (supervisors.stream().anyMatch(s -> s.getName().equals(supervisorName))) {
@@ -37,10 +37,10 @@ public class SupervisorService {
     }
 
     public List<Supervisor> getAllSupervisorsForProject(UUID projectId) {
-        return supervisorRepository.findSupervisorByProjectId(projectId);
+        return supervisorRepository.findByProjectId(projectId);
     }
 
     public List<Supervisor> getAllSupervisorsForManagerId(UUID managerId) {
-        return supervisorRepository.findSupervisorByManagerId(managerId);
+        return supervisorRepository.findByManagerId(managerId);
     }
 }

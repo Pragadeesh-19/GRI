@@ -29,6 +29,6 @@ public class EngineerService {
     }
 
     public List<Engineers> getAllEngineersForProject(UUID projectId) {
-        return engineerRepository.findEngineersByProjectId(projectId);
+        return engineerRepository.findByProjectId(projectId);
     }
 }

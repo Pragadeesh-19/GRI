@@ -8,8 +8,8 @@ import java.util.UUID;
 
 public interface EngineerRepository extends JpaRepository<Engineers, UUID> {
 
-    List<Engineers> findEngineersByProjectId(UUID projectId);
+    List<Engineers> findByProjectId(UUID projectId);
 
-    List<Engineers> findEngineersByManagerId(UUID managerId);
+    List<Engineers> findByManagerId(UUID managerId);
 }
 

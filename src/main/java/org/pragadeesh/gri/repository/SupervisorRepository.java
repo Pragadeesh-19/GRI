@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface SupervisorRepository extends JpaRepository<Supervisor, UUID> {
 
-    List<Supervisor> findSupervisorByProjectId(UUID projectId);
+    List<Supervisor> findByProjectId(UUID projectId);
 
-    List<Supervisor> findSupervisorByManagerId(UUID managerId);
+    List<Supervisor> findByManagerId(UUID managerId);
 }

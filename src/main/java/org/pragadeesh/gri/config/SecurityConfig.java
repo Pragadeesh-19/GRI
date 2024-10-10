@@ -29,7 +29,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request.requestMatchers("/register","/login").permitAll()
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("/register","/login").permitAll()
+                        .requestMatchers("/api/admin").hasRole("ADMIN")
+                        .requestMatchers("/api/manager").hasRole("MANAGER")
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

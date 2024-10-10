@@ -1,6 +1,8 @@
 package org.pragadeesh.gri.authentication;
 
-import org.pragadeesh.gri.entity.Manager;
+import org.pragadeesh.gri.dto.UserLoginDto;
+import org.pragadeesh.gri.dto.UserSignupDto;
+import org.pragadeesh.gri.entity.User;
 import org.pragadeesh.gri.service.AuthenticationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +19,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody Manager user) {
-        return ResponseEntity.ok(authenticationService.register(user));
+    public ResponseEntity<User> register(@RequestBody UserSignupDto userSignupDto) {
+        return ResponseEntity.ok(authenticationService.register(userSignupDto));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JwtResponse> login(@RequestBody Manager user) {
-        return ResponseEntity.ok(authenticationService.login(user));
+    public ResponseEntity<JwtResponse> login(@RequestBody UserLoginDto userLoginDto) {
+        return ResponseEntity.ok(authenticationService.login(userLoginDto));
     }
 }
