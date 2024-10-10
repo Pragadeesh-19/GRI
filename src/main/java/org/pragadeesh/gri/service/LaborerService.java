@@ -23,7 +23,7 @@ public class LaborerService {
     public Laborer addLaborerToProject(UUID projectId, String laborerName) {
 
         Project project = projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found with projectId " + projectId))
+                .orElseThrow(() -> new RuntimeException("Project not found with projectId " + projectId));
 
         Laborer laborer = new Laborer();
         laborer.setName(laborerName);
