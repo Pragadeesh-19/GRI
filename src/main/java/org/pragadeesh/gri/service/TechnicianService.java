@@ -1,5 +1,6 @@
 package org.pragadeesh.gri.service;
 
+import org.pragadeesh.gri.entity.Project;
 import org.pragadeesh.gri.entity.Technicians;
 import org.pragadeesh.gri.repository.ProjectRepository;
 import org.pragadeesh.gri.repository.TechnicianRepository;
@@ -20,15 +21,22 @@ public class TechnicianService {
     }
 
     public Technicians addTechnicianToProject(UUID projectId, String technicianName) {
+
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found with ProjectId " + projectId));
+
         Technicians technicians = new Technicians();
         technicians.setName(technicianName);
-        technicians.setProject(projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found with ProjectId " + projectId)));
+        technicians.setProject(project);
 
         return technicianRepository.save(technicians);
     }
 
     public List<Technicians> getAllTechniciansForProject(UUID projectId) {
         return technicianRepository.findByProjectId(projectId);
+    }
+
+    public List<Technicians> getAllTechniciansForManager(UUID managerId) {
+        return technicianRepository.findByManagerId(managerId);
     }
 }

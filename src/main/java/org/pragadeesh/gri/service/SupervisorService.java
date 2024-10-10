@@ -1,5 +1,6 @@
 package org.pragadeesh.gri.service;
 
+import org.pragadeesh.gri.entity.Project;
 import org.pragadeesh.gri.entity.Supervisor;
 import org.pragadeesh.gri.repository.ProjectRepository;
 import org.pragadeesh.gri.repository.SupervisorRepository;
@@ -20,18 +21,13 @@ public class SupervisorService {
     }
 
     public Supervisor addSupervisorToProject(UUID projectId, String supervisorName) {
-        List<Supervisor> supervisors = supervisorRepository.findByProjectId(projectId);
 
-        // Check if a supervisor with the same name already exists
-        if (supervisors.stream().anyMatch(s -> s.getName().equals(supervisorName))) {
-            throw new RuntimeException("Duplicate supervisor not allowed");
-        }
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found with projectId " + projectId));
 
-        // Save the new supervisor
         Supervisor supervisor = new Supervisor();
         supervisor.setName(supervisorName);
-        supervisor.setProject(projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found")));
+        supervisor.setProject(project);
 
         return supervisorRepository.save(supervisor);
     }

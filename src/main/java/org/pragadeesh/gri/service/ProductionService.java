@@ -1,6 +1,7 @@
 package org.pragadeesh.gri.service;
 
 import org.pragadeesh.gri.entity.Production;
+import org.pragadeesh.gri.entity.Project;
 import org.pragadeesh.gri.repository.ProductionRepository;
 import org.pragadeesh.gri.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
@@ -21,11 +22,14 @@ public class ProductionService {
     }
 
     public Production logProductionTime(UUID projectId, LocalDateTime start, LocalDateTime end) {
+
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found with ProjectId " + projectId));
+
         Production production = new Production();
         production.setStartTime(start);
         production.setEndTime(end);
-        production.setProject(projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found with projectID " + projectId)));
+        production.setProject(project);
 
         return productionRepository.save(production);
     }

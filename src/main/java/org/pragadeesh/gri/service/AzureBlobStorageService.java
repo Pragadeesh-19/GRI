@@ -17,7 +17,7 @@ public class AzureBlobStorageService {
     @Value("${spring.cloud.azure.storage.blob.container-name}")
     private String containerName;
 
-    public String uploadVehicleReadingImage(MultipartFile file) throws Exception {
+    public String uploadFile(MultipartFile file) throws Exception {
         BlobServiceClient blobServiceClient = new BlobServiceClientBuilder()
                 .connectionString(connectionString).buildClient();
 

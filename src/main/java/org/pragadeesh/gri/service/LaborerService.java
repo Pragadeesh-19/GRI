@@ -1,6 +1,7 @@
 package org.pragadeesh.gri.service;
 
 import org.pragadeesh.gri.entity.Laborer;
+import org.pragadeesh.gri.entity.Project;
 import org.pragadeesh.gri.repository.LaborerRepository;
 import org.pragadeesh.gri.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
@@ -20,15 +21,22 @@ public class LaborerService {
     }
 
     public Laborer addLaborerToProject(UUID projectId, String laborerName) {
+
+        Project project = projectRepository.findById(projectId)
+                .orElseThrow(() -> new RuntimeException("Project not found with projectId " + projectId))
+
         Laborer laborer = new Laborer();
         laborer.setName(laborerName);
-        laborer.setProject(projectRepository.findById(projectId)
-                .orElseThrow(() -> new RuntimeException("Project not found with projectId " + projectId)));
+        laborer.setProject(project);
 
         return laborerRepository.save(laborer);
     }
 
     public List<Laborer> getAllLaborersForProject(UUID projectId) {
         return laborerRepository.findByProjectId(projectId);
+    }
+
+    public List<Laborer> getAllLabourersForManager(UUID managerId) {
+        return laborerRepository.findByManagerId(managerId);
     }
 }
