@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @Entity
 @Data
+@Table(name = "users")
 public class User implements UserDetails {
 
     @Id
@@ -27,9 +28,6 @@ public class User implements UserDetails {
     private String location;
 
     private String shift;
-
-    @OneToMany(mappedBy = "assignedManager")
-    private List<Project> projects;
 
     @Enumerated(EnumType.STRING)
     private Role role;

@@ -18,6 +18,6 @@ public class Project {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "assigned_manager_id")
+    @JoinColumn(name = "assigned_manager_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_project_manager"))
     private User assignedManager;
 }
