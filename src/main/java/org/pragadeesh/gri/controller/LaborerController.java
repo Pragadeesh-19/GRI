@@ -20,18 +20,18 @@ public class LaborerController {
     }
 
     @PostMapping("/laborer/add")
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public ResponseEntity<Laborer> addLaborerToProject(@RequestParam UUID projectId,
                                                        @RequestParam String laborerName) {
         return ResponseEntity.ok(laborerService.addLaborerToProject(projectId, laborerName));
     }
 
-    @GetMapping("/project")
+    @GetMapping("/laborer/project")
     public ResponseEntity<List<Laborer>> getAllLaborerForProject(@RequestParam UUID projectId) {
         return ResponseEntity.ok(laborerService.getAllLaborersForProject(projectId));
     }
 
-    @GetMapping("/manager")
+    @GetMapping("/laborer/manager")
     public ResponseEntity<List<Laborer>> getAllLaborerForManager(@RequestParam UUID managerId) {
         return ResponseEntity.ok(laborerService.getAllLabourersForManager(managerId));
     }

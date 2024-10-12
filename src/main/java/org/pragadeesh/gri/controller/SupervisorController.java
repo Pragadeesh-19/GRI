@@ -21,16 +21,17 @@ public class SupervisorController {
 
     @PostMapping("/supervisor/add")
     @PreAuthorize("hasRole('MANAGER')")
-    public ResponseEntity<Supervisor> addSupervisor(UUID projectId, String supervisorName) {
+    public ResponseEntity<Supervisor> addSupervisor(@RequestParam UUID projectId,
+                                                    @RequestParam String supervisorName) {
         return ResponseEntity.ok(supervisorService.addSupervisorToProject(projectId, supervisorName));
     }
 
-    @GetMapping("/project/{projectId}")
+    @GetMapping("/supervisor/project/{projectId}")
     public ResponseEntity<List<Supervisor>> getAllSupervisorForProject(@PathVariable UUID projectId) {
         return ResponseEntity.ok(supervisorService.getAllSupervisorsForProject(projectId));
     }
 
-    @GetMapping("/manager/{managerId}")
+    @GetMapping("/supervisor/manager/{managerId}")
     public ResponseEntity<List<Supervisor>> getAllSupervisorForManager(@PathVariable UUID managerId) {
         return ResponseEntity.ok(supervisorService.getAllSupervisorsForManagerId(managerId));
     }

@@ -20,7 +20,7 @@ public class TechnicianController {
     }
 
     @PostMapping("/technician/project/{projectId}")
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public ResponseEntity<Technicians> addTechniciansToProject(@PathVariable UUID projectId,
                                                                @RequestParam String technicianName) {
         return ResponseEntity.ok(technicianService.addTechnicianToProject(projectId, technicianName));

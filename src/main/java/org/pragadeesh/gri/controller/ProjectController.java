@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/admin/projects")
+@RequestMapping("/api/admin/project")
 public class ProjectController {
 
     private final ProjectService projectService;
@@ -20,14 +20,14 @@ public class ProjectController {
     }
 
     @PostMapping("/create")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Project> createProject(@RequestParam String projectName) {
         return ResponseEntity.ok(projectService.createProject(projectName));
     }
 
     // Available only to admin
     @PostMapping("/{projectId}/assign/{managerId}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Project> assignProject(@PathVariable UUID projectId,
                                                  @PathVariable UUID managerId) {
         return ResponseEntity.ok(projectService.assignProjectToManager(projectId, managerId));

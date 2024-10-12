@@ -21,10 +21,12 @@ public class VehicleController {
     }
 
     @PostMapping("/vehicle/project/{projectId}")
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public ResponseEntity<Vehicle> uploadVehiclePhotos(@PathVariable UUID projectId,
-                                                       @RequestBody List<MultipartFile> file) throws Exception {
-        return ResponseEntity.ok(vehicleService.uploadVehiclePhotos(projectId, file));
+                                                       @RequestPart("file") List<MultipartFile> file,
+                                                       @RequestParam String vehicleName,
+                                                       @RequestParam String vehicleType) throws Exception {
+        return ResponseEntity.ok(vehicleService.uploadVehiclePhotos(projectId, file, vehicleName, vehicleType));
     }
 
     @GetMapping("/vehicle/project/{projectId}")

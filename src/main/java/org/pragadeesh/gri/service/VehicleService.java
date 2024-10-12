@@ -5,13 +5,14 @@ import org.pragadeesh.gri.entity.Vehicle;
 import org.pragadeesh.gri.repository.ProjectRepository;
 import org.pragadeesh.gri.repository.VehicleRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Repository
+@Service
 public class VehicleService {
 
     private final VehicleRepository vehicleRepository;
@@ -24,7 +25,7 @@ public class VehicleService {
         this.azureBlobStorageService = azureBlobStorageService;
     }
 
-    public Vehicle uploadVehiclePhotos(UUID projectId, List<MultipartFile> photos) throws Exception {
+    public Vehicle uploadVehiclePhotos(UUID projectId, List<MultipartFile> photos, String vehicleName, String vehicleType) throws Exception {
 
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found with projectId " + projectId));
@@ -36,6 +37,8 @@ public class VehicleService {
         }
 
         Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleName(vehicleName);
+        vehicle.setVehicleType(vehicleType);
         vehicle.setVehicleImageUrl(imgUrls);
         vehicle.setProject(project);
 

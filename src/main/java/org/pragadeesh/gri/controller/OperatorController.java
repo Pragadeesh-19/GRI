@@ -20,7 +20,7 @@ public class OperatorController {
     }
 
     @PostMapping("/operator/project")
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public ResponseEntity<Operators> addOperatorToProject(@RequestParam UUID projectId,
                                                           @RequestParam String operatorName) {
         return ResponseEntity.ok(operatorService.addOperatorToProject(projectId, operatorName));

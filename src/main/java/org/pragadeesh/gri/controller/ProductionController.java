@@ -3,6 +3,7 @@ package org.pragadeesh.gri.controller;
 import org.pragadeesh.gri.entity.Production;
 import org.pragadeesh.gri.service.ProductionService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class ProductionController {
     }
 
     @PostMapping("/production/project/{projectId}")
+    @PreAuthorize("hasAuthority('MANAGER')")
     public ResponseEntity<Production> logProductionTime(@PathVariable UUID projectId,
                                                         @RequestParam LocalDateTime start,
                                                         @RequestParam LocalDateTime end) {
