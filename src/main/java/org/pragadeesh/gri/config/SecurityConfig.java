@@ -1,6 +1,5 @@
 package org.pragadeesh.gri.config;
 
-import org.pragadeesh.gri.entity.Role;
 import org.pragadeesh.gri.filter.JwtRequestFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,8 +30,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/register","/login").permitAll()
-                        .requestMatchers("/api/admin").hasRole("ADMIN")
-                        .requestMatchers("/api/manager").hasRole("MANAGER")
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/manager/**").hasRole("MANAGER")
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

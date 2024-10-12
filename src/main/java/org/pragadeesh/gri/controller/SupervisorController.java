@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/admin/supervisors")
+@RequestMapping("/api/manager")
 public class SupervisorController {
 
     private final SupervisorService supervisorService;
@@ -19,8 +19,8 @@ public class SupervisorController {
         this.supervisorService = supervisorService;
     }
 
-    @PostMapping("/add")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/supervisor/add")
+    @PreAuthorize("hasRole('MANAGER')")
     public ResponseEntity<Supervisor> addSupervisor(UUID projectId, String supervisorName) {
         return ResponseEntity.ok(supervisorService.addSupervisorToProject(projectId, supervisorName));
     }

@@ -3,6 +3,7 @@ package org.pragadeesh.gri.controller;
 import org.pragadeesh.gri.entity.Technicians;
 import org.pragadeesh.gri.service.TechnicianService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class TechnicianController {
     }
 
     @PostMapping("/technician/project/{projectId}")
+    @PreAuthorize("hasRole('MANAGER')")
     public ResponseEntity<Technicians> addTechniciansToProject(@PathVariable UUID projectId,
                                                                @RequestParam String technicianName) {
         return ResponseEntity.ok(technicianService.addTechnicianToProject(projectId, technicianName));

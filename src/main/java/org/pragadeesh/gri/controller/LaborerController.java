@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/manager/laborer")
+@RequestMapping("/api/manager")
 public class LaborerController {
 
     private final LaborerService laborerService;
@@ -19,7 +19,7 @@ public class LaborerController {
         this.laborerService = laborerService;
     }
 
-    @PostMapping("/add")
+    @PostMapping("/laborer/add")
     @PreAuthorize("hasRole('MANAGER')")
     public ResponseEntity<Laborer> addLaborerToProject(@RequestParam UUID projectId,
                                                        @RequestParam String laborerName) {

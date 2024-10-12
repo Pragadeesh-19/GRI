@@ -3,6 +3,7 @@ package org.pragadeesh.gri.controller;
 import org.pragadeesh.gri.entity.Operators;
 import org.pragadeesh.gri.service.OperatorService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class OperatorController {
     }
 
     @PostMapping("/operator/project")
+    @PreAuthorize("hasRole('MANAGER')")
     public ResponseEntity<Operators> addOperatorToProject(@RequestParam UUID projectId,
                                                           @RequestParam String operatorName) {
         return ResponseEntity.ok(operatorService.addOperatorToProject(projectId, operatorName));
