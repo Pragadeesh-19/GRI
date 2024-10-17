@@ -20,13 +20,14 @@ public class SupervisorController {
     }
 
     @PostMapping("/supervisor/add")
-    @PreAuthorize("hasRole('MANAGER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
     public ResponseEntity<Supervisor> addSupervisor(@RequestParam UUID projectId,
                                                     @RequestParam String supervisorName) {
         return ResponseEntity.ok(supervisorService.addSupervisorToProject(projectId, supervisorName));
     }
 
     @GetMapping("/supervisor/project/{projectId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
     public ResponseEntity<List<Supervisor>> getAllSupervisorForProject(@PathVariable UUID projectId) {
         return ResponseEntity.ok(supervisorService.getAllSupervisorsForProject(projectId));
     }

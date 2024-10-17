@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Project Management Dashboard</h1>
+
+<!-- Project Creation Section -->
+<section>
+    <h2>Create Project</h2>
+    <input type="text" id="projectName" placeholder="Project Name">
+    <button onclick="createProject()">Create Project</button>
+</section>
+
+<!-- Projects for Manager -->
+<section>
+    <h2>Projects for Manager</h2>
+    <input type="text" id="managerId" placeholder="Manager ID">
+    <button onclick="getProjectsForManager()">Get Projects</button>
+    <div id="projects"></div>
+</section>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

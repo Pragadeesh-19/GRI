@@ -21,7 +21,7 @@ public class ProductionController {
     }
 
     @PostMapping("/production/project/{projectId}")
-    @PreAuthorize("hasAuthority('MANAGER')")
+    @PreAuthorize("hasAnyAuthority('MANAGER', 'ADMIN')")
     public ResponseEntity<Production> logProductionTime(@PathVariable UUID projectId,
                                                         @RequestParam LocalDateTime start,
                                                         @RequestParam LocalDateTime end) {

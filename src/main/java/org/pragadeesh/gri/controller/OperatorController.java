@@ -20,13 +20,14 @@ public class OperatorController {
     }
 
     @PostMapping("/operator/project")
-    @PreAuthorize("hasAuthority('MANAGER')")
+    @PreAuthorize("hasAnyAuthority('MANAGER', 'ADMIN')")
     public ResponseEntity<Operators> addOperatorToProject(@RequestParam UUID projectId,
                                                           @RequestParam String operatorName) {
         return ResponseEntity.ok(operatorService.addOperatorToProject(projectId, operatorName));
     }
 
     @GetMapping("/operator/project/{projectId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
     public ResponseEntity<List<Operators>> getOperatorsByProject(@PathVariable UUID projectId) {
         return ResponseEntity.ok(operatorService.getAllOperatorsForProject(projectId));
     }

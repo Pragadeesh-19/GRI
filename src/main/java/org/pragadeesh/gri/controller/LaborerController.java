@@ -27,6 +27,7 @@ public class LaborerController {
     }
 
     @GetMapping("/laborer/project")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<List<Laborer>> getAllLaborerForProject(@RequestParam UUID projectId) {
         return ResponseEntity.ok(laborerService.getAllLaborersForProject(projectId));
     }

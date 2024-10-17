@@ -21,7 +21,7 @@ public class VehicleController {
     }
 
     @PostMapping("/vehicle/project/{projectId}")
-    @PreAuthorize("hasAuthority('MANAGER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
     public ResponseEntity<Vehicle> uploadVehiclePhotos(@PathVariable UUID projectId,
                                                        @RequestPart("file") List<MultipartFile> file,
                                                        @RequestParam String vehicleName,
@@ -30,6 +30,7 @@ public class VehicleController {
     }
 
     @GetMapping("/vehicle/project/{projectId}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'MANAGER')")
     public List<Vehicle> getAllVehicleByProject(@PathVariable UUID projectId) {
         return vehicleService.getAllVehiclesForProject(projectId);
     }

@@ -20,13 +20,14 @@ public class EngineerController {
     }
 
     @PostMapping("/engineer/project/{projectId}")
-    @PreAuthorize("hasAuthority('MANAGER')")
+    @PreAuthorize("hasAnyAuthority('MANAGER', 'ADMIN')")
     public ResponseEntity<Engineers> addEngineersToProject(@PathVariable UUID projectId,
                                                            @RequestParam String engineerName) {
         return ResponseEntity.ok(engineerService.addEngineersToProject(projectId, engineerName));
     }
 
     @GetMapping("/engineer/project")
+    @PreAuthorize("hasAnyAuthority('MANAGER', 'ADMIN')")
     public ResponseEntity<List<Engineers>> getAllEngineersByProject(@RequestParam UUID projectId) {
         return ResponseEntity.ok(engineerService.getAllEngineersForProject(projectId));
     }
